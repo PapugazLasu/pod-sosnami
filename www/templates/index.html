@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pod Sosnami</title>
+  </head>
+  <body>
+    <h1>Dom Pod Sosnami</h1>
+    {% for person in people %}
+    <img src="{{ person.image }}" >
+    <p>{{ person.name }}</p>
+    <p>{{ person.title }}</p>
+    <p>{{ person.email }}</p>
+    {% endfor %}
+    
+
+  </body>
+</html>
