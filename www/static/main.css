@@ -1,0 +1,45 @@
+/* main.css */
+body {
+  background-color: #ddd;
+  font-size: 16px;
+}
+
+main {
+  margin: 0 auto;
+}
+
+
+section {
+  min-width: 300px;
+  border-radius: 3px;
+  background-color: white;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+}
+
+
+img {
+  border-radius: 5px;
+  width: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.person-title {
+  font-size: 1em;
+  color: #aaa;
+}
+
+.person-email {
+  font-size: 1em;
+}

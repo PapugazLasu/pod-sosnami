@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Opiekun: {{ username }}</h1><br>
+<div class="row">
+  {% for person in persons %}
+  <div class="col-md-4">
+    <div class="person panel panel-default">
+      <a href="/{{ person.id }}/">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ person.name }}</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

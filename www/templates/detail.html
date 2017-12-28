@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="one-person">
+    <h1>{{ person.name }}</h1>
+    <img src="{{ person.photo.url }}">
+    <p>{{ person.title }}</p>
+    <button id="likes" data-id="{{ person.id }}"
+            class="btn btn-mini btn-danger"
+            type="button">
+            <span class="fas fa-heart"> </span>
+        {% if person.likes > 0 %} {{ person.likes }} {% endif %}
+    </button>
+  </div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/heart.js' %}"></script>
+{% endblock %}

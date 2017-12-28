@@ -1,18 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Pod Sosnami</title>
-  </head>
-  <body>
-    <h1>Dom Pod Sosnami</h1>
-    {% for person in people %}
-    <img src="{{ person.image }}" >
-    <p>{{ person.name }}</p>
-    <p>{{ person.title }}</p>
-    <p>{{ person.email }}</p>
-    {% endfor %}
-    
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-  </body>
-</html>
+{% block content %}
+
+      <div class="row">
+      {% for person in people|dictsort:'name' %}
+      <div class="col-md-4">
+        <a href="/{{ person.id }}/">
+        <div class="person panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{ person.name }}</h3>
+              <span class="glyphicon glyphicon-search"></span>
+            <a class="panel-username"
+               href="/user/{{person.user.username}}/">
+               Opiekun: {{ person.user.username }}
+             </a>
+           </div>
+           <img src="{{ person.photo.url }}" >
+          <p class="person-title">{{ person.title }}</p>
+          <p class="person-email">{{ person.email }}</p>
+          <button id="likes" data-id="{{ person.id }}"
+                  class="btn btn-mini btn-danger"
+                  type="button">
+                  <span class="fas fa-heart"> </span>
+              {% if person.likes > 0 %} {{ person.likes }} {% endif %}
+          </button>
+        </div>
+      </a>
+      </div>
+      {% if forloop.counter|divisibleby:"3" %}
+    </div><div class="row">
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="person panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Dodaj osobę</h3>
+      </div>
+      <div class="panel-body">
+        <form enctype="multipart/form-data"  action="post_url/" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Zatwierdź" />
+        </form>
+      </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/heart.js' %}"></script>
+{% endblock %}
